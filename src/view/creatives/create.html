@@ -1,0 +1,34 @@
+{% extends "creatives/index.html" %}
+
+{% block title %}A new creative!{% endblock %}
+
+{% block body %}
+
+{% if errors %}
+<ul>
+  {% for error in errors %}
+    <li><font color=red>{{ error }}</font></li>
+  {% endfor %}
+</ul> {% endif %}
+
+ <form method="post">
+    <label>Name:</label>
+    <input type='text' name="name"
+    value="{% if new_creative %}{{ new_creative.name}}{% endif %}"/>
+    <br/>
+
+    <label>Destination Url:</label>
+    <input type='text' name="url"
+    value="{% if new_creative %}{{ new_creative.url}}{% endif %}"/>
+    <br/>
+
+    <label>Size:</label>
+    <input type='text' name="size"
+    value="{% if new_creative %}{{ new_creative.size}}{% endif %}"/>
+
+
+    <br/>
+    <br/>
+    <input type="submit"/>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% block body %}
+<ul>
+    {% if records %}
+        {% for record in records %}
+            <li> {{record.size}} {{ record.name }} -> {{ record.url }}
+                <a href="{%url  action="show" record_id=record.id %}">Show</a></li>
+
+        {% endfor %}
+    {% else %}
+        <li>No creatives yet!</li>
+    {% endif %}
+</ul>
+
+<p><a href="{% url action="create" %}">New creative...</a></p>
+
+{% endblock %}

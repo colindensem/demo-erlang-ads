@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Fresh hot messages!</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+        <script>
+
+            function listen_for_events(timestamp)
+            {
+                var push = $.ajax({
+                    url: "/world/pull/"+timestamp,
+                    type: "GET",
+                });
+
+                push.success(function(data,code, xhr) {
+                    pop.abort();
+                    for (var i=0; i<data.messages.length; i++)
+                    {
+                        var msg = data.messages[i].message_text;
+                        var id  = data.messages[i].id;
+                        $("#message_list").append(
+                            "<li id="+id+">"+msg+"</li>");
+                    };
+                    listen_for_events(data.timestamp);
+                });
+
+                push.fail(function(jqXHR, textStatus){
+                    //TODO
+                });
+
+                var pop = $.ajax({
+                    url: "/world/pop/"+timestamp,
+                    type: "GET",
+                });
+                pop.success(function(data,code, xhr) {
+                    push.abort();
+                    for (var i=0; i<data.messages.length; i++)
+                    {
+                        var id  = data.messages[i].id;
+                        $("#"+id).remove();
+                    };
+                    listen_for_events(data.timestamp);
+                });
+                pop.fail(function(jqXHR, textStatus){
+                   //TODO
+                });
+
+            }
+            $(document).ready(function()
+            {
+                listen_for_events({{ timestamp }});
+            });
+        </script>
+    </head>
+    <body>
+    <ul id="message_list">
+        {% for message in messages %}
+            <li id={{message.id}}>{{ message.message_text }} </li>
+        {% empty %}
+            <li>No messages! </li>
+        {% endfor %}
+    </ul>
+    </body>
+</html>

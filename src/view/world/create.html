@@ -1,0 +1,19 @@
+{% extends "world/list.html" %}
+
+{% block title %}A new message!{% endblock %}
+
+{% block body %}
+
+{% if errors %}
+<ul>
+  {% for error in errors %}
+    <li><font color=red>{{ error }}</font></li>
+  {% endfor %}
+</ul> {% endif %}
+
+ <form method="post">
+  Enter a new message:
+  <textarea name="message_text">{% if new_msg %}{{ new_msg.message_text}}{% endif %}</textarea>
+  <input type="submit"/>
+</form>
+{% endblock %}

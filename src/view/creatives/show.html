@@ -1,0 +1,16 @@
+Welcome to show!
+
+<h1>{{record.name}}</h1>
+
+
+Destination Url > <a href="{{record.url}}" target="_new">Test</a>
+
+<p>
+<a href="{% url action="edit" record_id=record.id %}">Edit Settings</a>
+<a href="{% url action="index"%}">Back to Index</a>
+</p>
+<p>
+<form name="delete" method="post" action="{% url action="delete" record_id=record.id %}">
+        <input type="submit" value="Delete {{ record.name }}?" />
+    </form>
+</p>

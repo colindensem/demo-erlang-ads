@@ -1,0 +1,22 @@
+<html> <head>
+<title>{% block title %}Messages!{% endblock %}</title> </head>
+<body> {% block body %} <ul> {% if messages %}
+{% for message in messages %} <li>{{ message.message_text }}
+{% endfor %} {% else %}
+<li>No messages! {% endif %}
+</ul>
+
+<p><a href="{% url action="create" %}">New message...</a></p>
+
+<form method="post" action="{% url action="delete" %}">
+Delete:
+  <select name="message_id">
+    {% for message in messages %}
+      <option value="{{ message.id }}">{{ message.message_text }}
+    {% endfor %}
+  </select>
+  <input type="submit"/>
+</form>
+{% endblock %}
+</body>
+</html>
