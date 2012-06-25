@@ -12,6 +12,7 @@ init() ->
         boss_mq:push("new-messages",NewMessage);
         (deleted, OldMessage)->
         boss_mq:push("old-messages", OldMessage) end),
+
     {ok, [WatchId]}.
 
 stop(ListOfWatchIDs) ->

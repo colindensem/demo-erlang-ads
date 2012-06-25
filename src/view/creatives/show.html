@@ -2,13 +2,19 @@ Welcome to show!
 
 <h1>{{record.name}}</h1>
 
+<p>Impressions: {{ record.impr_counter}}</p>
 
-Destination Url > <a href="{{record.url}}" target="_new">Test</a>
+Destination Url > {{record.url }} <a href="{{record.url}}" target="_new">Test</a>
+
+<p>
+<img src="{{ record.image}}"/>
+</p>
 
 <p>
 <a href="{% url action="edit" record_id=record.id %}">Edit Settings</a>
 <a href="{% url action="index"%}">Back to Index</a>
 </p>
+
 <p>
 <form name="delete" method="post" action="{% url action="delete" record_id=record.id %}">
         <input type="submit" value="Delete {{ record.name }}?" />

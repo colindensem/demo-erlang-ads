@@ -1,0 +1,15 @@
+// display the advertisement
+var advert = '';
+
+advert+='<a href="{% url action="click" record_id=creative.id %}"
+    target="_new">';
+
+advert+='<img class="ad" alt="{{creative.name}}"
+    src="{% url action="image" record_id=creative.id %}" border="0"/>';
+
+advert+='</a>';
+
+l1 = document.getElementById("banner-ad-header");
+l2 = document.getElementById("banner-ad-footer");
+if (l1) l1.innerHTML = advert;
+if (l2) l2.innerHTML = advert;

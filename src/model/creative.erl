@@ -1,5 +1,7 @@
--module(creative, [Id, Name, Url, Size]).
+-module(creative, [Id, Name, Url, Size, Image]).
 -compile(export_all).
+
+-counter(impr_counter).
 
 validation_tests()->
 [

@@ -2,7 +2,7 @@
 <ul>
     {% if records %}
         {% for record in records %}
-            <li> {{record.size}} {{ record.name }} -> {{ record.url }}
+            <li> {{record.size}} {{ record.name }} (Impr:{{ record.impr_counter}}) -> {{ record.url }}
                 <a href="{%url  action="show" record_id=record.id %}">Show</a></li>
 
         {% endfor %}

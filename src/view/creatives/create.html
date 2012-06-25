@@ -11,7 +11,7 @@
   {% endfor %}
 </ul> {% endif %}
 
- <form method="post">
+ <form method="post" enctype="multipart/form-data">
     <label>Name:</label>
     <input type='text' name="name"
     value="{% if new_creative %}{{ new_creative.name}}{% endif %}"/>
@@ -25,6 +25,11 @@
     <label>Size:</label>
     <input type='text' name="size"
     value="{% if new_creative %}{{ new_creative.size}}{% endif %}"/>
+
+   <!--  <br/>
+    <label>Img File</label>
+    <input type="file" name="file" /> -->
+
 
 
     <br/>
