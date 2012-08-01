@@ -1,7 +1,7 @@
 ebin/*
-log/*
+log/*.log
 boss.config
 erl_crash.dump
-scratch/*
+scratch/*.png
 priv/static/public/creatives/*.png
 
